@@ -25,6 +25,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_bg_white"
         android:drawableTop="@drawable/ic_add_a_photo_black_24dp"
+        android:onClick="uploadImage"
         android:padding="10dp"
         android:text="Upload Outfit"
         android:textColor="@color/blue" />
