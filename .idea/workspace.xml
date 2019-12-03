@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d788ace6-9a3f-49ed-bc56-9bcf546740bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SustainableCloset/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SustainableCloset/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SustainableCloset/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SustainableCloset/app/src/main/java/com/example/sustainablecloset/LandingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/app/src/main/java/com/example/sustainablecloset/LandingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SustainableCloset/app/src/main/res/layout/landing_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/app/src/main/res/layout/landing_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SustainableCloset/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SustainableCloset/.idea/codeStyles/Project.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,10 +10,28 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SustainableCloset/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SustainableCloset/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -26,9 +40,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-6" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-7" />
+    <option name="y" value="2" />
     <option name="width" value="1378" />
     <option name="height" value="733" />
   </component>
@@ -37,6 +51,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -44,22 +59,16 @@
               <item name="Sustainable-Closet" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sustainable-Closet" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Sustainable-Closet" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sustainable-Closet" type="462c0819:PsiDirectoryNode" />
-              <item name="SustainableCloset" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SustainableCloset" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -87,7 +96,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="1" width="1378" height="733" extended-state="0" />
+    <frame x="-7" y="2" width="1378" height="733" extended-state="1" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32910448" />
@@ -108,6 +117,16 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SustainableCloset/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SustainableCloset/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
