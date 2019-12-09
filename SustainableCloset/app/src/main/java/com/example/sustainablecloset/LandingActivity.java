@@ -22,4 +22,8 @@ public class LandingActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void outfitRecOnClick(View view){
+        setContentView(R.layout.outfit_recommender);
+    }
 }

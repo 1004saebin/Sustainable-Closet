@@ -34,10 +34,11 @@
         android:id="@+id/outfit_recommender"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="10dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_bg_white"
         android:drawableTop="@drawable/ic_face_black_24dp"
+        android:onClick="outfitRecOnClick"
         android:padding="10dp"
         android:text="Outfit Recommender"
         android:textColor="@color/green" />
