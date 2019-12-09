@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,11 +30,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AddImagesActivity extends AppCompatActivity {
 
+    private List<String> listOfImagesPath;
+    public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GridViewDemo/";
+    private GridView grid;
     private int GALLERY = 1, CAMERA = 2, CAMERA_PERMISSION_REQUEST_CODE = 4;
     private ImageView imageview;
     private static final String IMAGE_DIRECTORY = "/demonuts";
@@ -43,7 +50,7 @@ public class AddImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_images);
 
-
+        grid = (GridView) findViewById(R.id.gridviewimg);
 
         imageview = findViewById(R.id.iv);
 
@@ -54,26 +61,7 @@ public class AddImagesActivity extends AppCompatActivity {
     }
 
     private void showPictureDialog(Context context){
-//        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-//        pictureDialog.setTitle("Select Action");
-//        String[] pictureDialogItems = {
-//                "Select photo from gallery",
-//                "Capture photo from camera" };
-//        pictureDialog.setItems(pictureDialogItems,
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        switch (which) {
-//                            case 0:
-//                                choosePhotoFromGallery();
-//                                break;
-//                            case 1:
-//                                takePhotoFromCamera();
-//                                break;
-//                        }
-//                    }
-//                });
-//        pictureDialog.show();
+
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
 
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -166,46 +154,6 @@ public class AddImagesActivity extends AppCompatActivity {
         return imageFile;
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == this.RESULT_CANCELED) {
-//            return;
-//        }
-//        if (requestCode == GALLERY) {
-//            if (data != null) {
-//
-//                //address of the image
-//                Uri contentURI = data.getData();
-//
-//
-//                try {
-//                    //get the bitmap
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-//
-//                    String path = saveImage(bitmap);
-//                    Toast.makeText(AddImagesActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-//
-//                    //show the image
-//                    imageview.setImageBitmap(bitmap);
-//
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(AddImagesActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//        } else if (requestCode == CAMERA) {
-//////            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-////
-////            //show the image
-////            imageview.setImageBitmap(thumbnail);
-////            saveImage(thumbnail);
-//            Toast.makeText(AddImagesActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -215,6 +163,7 @@ public class AddImagesActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         imageview.setImageBitmap(selectedImage);
+
                     }
 
                     break;
@@ -290,5 +239,14 @@ public class AddImagesActivity extends AppCompatActivity {
         }
         return "";
     }
+
+    public void AddImage(View view){
+
+
+        Intent intent = new Intent(getApplicationContext(), ClosetImg.class);
+        startActivity(intent);
+
+    }
+
 
 }
