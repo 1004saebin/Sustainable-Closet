@@ -23,12 +23,18 @@ public class OutfitRecommenderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.outfit_recommender);
 
-        viewFlipper = findViewById(R.id.view_flipper);
-        TextView textView = new TextView(this);
-        textView.setText("Dynamically added TextView");
-        textView.setGravity(Gravity.CENTER);
+//        viewFlipper = findViewById(R.id.view_flipper);
+//        TextView textView = new TextView(this);
+//        textView.setText("Dynamically added TextView");
+//        textView.setGravity(Gravity.CENTER);
+//
+//        viewFlipper.addView(textView);
 
-        viewFlipper.addView(textView);
+        ////ImageView
+        ImageView firstImage = (ImageView) findViewById(R.id.firstImage);
+
+        int imageResource = getResources().getIdentifier("@drawable/outfit_recommend_5", null, this.getPackageName());
+        firstImage.setImageResource(imageResource);
 
 
 
