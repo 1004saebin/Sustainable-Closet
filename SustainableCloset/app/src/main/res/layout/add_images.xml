@@ -6,33 +6,45 @@
     android:background="@color/backgroundCyan"
     tools:context=".AddImagesActivity">
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="40dp"
-        android:onClick="openOption"
-        android:text="Select or Capture Image"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="385dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="15dp"
-        />
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="40dp"
+            android:onClick="openOption"
+            android:text="Select or Capture Image"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv"
-        android:layout_alignParentEnd="true"
-        android:onClick="AddImage"
-        android:text="Add" />
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="255dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/btn" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv"
+            android:layout_alignParentEnd="true"
+            android:onClick="AddImage"
+            android:text="Add" />
+
+
+
+        <GridView
+            android:id="@+id/gridviewimg"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/btnSend"
+            android:numColumns="3"/>
+
 
 
 </RelativeLayout>

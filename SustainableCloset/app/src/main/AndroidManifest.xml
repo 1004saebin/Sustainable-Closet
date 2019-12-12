@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ClosetActivity"></activity>
-        <activity android:name=".AddImagesActivity" />
+        <activity
+            android:name=".AddImagesActivity"
+            android:label="Upload Images"/>
         <activity android:name=".LandingActivity" />
         <activity android:name=".ClosetImg" />
         <activity

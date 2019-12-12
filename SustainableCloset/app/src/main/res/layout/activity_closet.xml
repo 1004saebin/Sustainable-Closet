@@ -24,7 +24,7 @@
 
         </GridView>
     <Button
-        android:id="@+id/capture_btn1"
+        android:id="@+id/seeRate_btn1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="See Rate"

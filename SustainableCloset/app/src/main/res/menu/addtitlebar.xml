@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/iconHamburger"
+            android:icon="@drawable/hamburger"
+            app:showAsAction="ifRoom|withText"
+            android:title="Menu">
+
+            <menu>
+
+                <item
+                    android:icon="@drawable/home"
+                    android:id="@+id/menuItemHome"
+                    android:onClick="goToLandingPage"
+                    android:title="Home"></item>
+                <item
+                    android:icon="@drawable/ic_face_black_24dp"
+                    android:id="@+id/menuItemRecommender"
+                    android:title="Outfit Recommender"></item>
+                <item
+                    android:icon="@drawable/ic_add_a_photo_black_24dp"
+                    android:id="@+id/menuItemCamera"
+                    android:onClick="goToUpload"
+                    android:title="Upload Outfit"></item>
+                <item
+                    android:icon="@drawable/ic_spa_black_24dp"
+                    android:id="@+id/menuItemBeer"
+                    android:title="Eco-friendliness"></item>
+
+            </menu>
+        </item>
+</menu>

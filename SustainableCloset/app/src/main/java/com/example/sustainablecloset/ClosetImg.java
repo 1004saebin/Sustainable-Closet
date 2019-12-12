@@ -38,9 +38,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ClosetImg extends Activity implements OnClickListener {
+public class ClosetImg extends Activity {
 
-    Button captureBtn = null;
+    Button rateBtn = null;
     Button galleryBtn = null;
     final int CAMERA_CAPTURE = 1;
     private int GALLERY = 1;
@@ -49,7 +49,7 @@ public class ClosetImg extends Activity implements OnClickListener {
     private GridView grid;
     private List<String> listOfImagesPath;
     private GalleryAdapter galleryAdapter;
-    public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GridViewDemo/";
+    public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetView/";
     String imageEncoded;
     List<String> imagesEncodedList;
 
@@ -58,22 +58,9 @@ public class ClosetImg extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet);
 
-        //Camera button
-        captureBtn = (Button) findViewById(R.id.capture_btn1);
-        captureBtn.setOnClickListener(this);
+        //Rate button
+        rateBtn = (Button) findViewById(R.id.seeRate_btn1);
 
-        //gallery button
-        //galleryBtn = (Button) findViewById(R.id.gallery_btn1);
-//        galleryBtn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY);
-//            }
-//        });
 
         grid = (GridView) findViewById(R.id.gridviewimg);
 
@@ -83,153 +70,7 @@ public class ClosetImg extends Activity implements OnClickListener {
             grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-// Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_image_capture, menu);
-        return true;
-    }
-
-    @Override
-    public void onClick(View arg0) {
-// TODO Auto-generated method stub
-        if (arg0.getId() == R.id.capture_btn1) {
-
-            try {
-//use standard intent to capture an image
-                Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//we will handle the returned data in onActivityResult
-                startActivityForResult(captureIntent, CAMERA_CAPTURE);
-            } catch (ActivityNotFoundException anfe) {
-//display an error message
-                String errorMessage = "Whoops – your device doesn’t support capturing images!";
-                Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        }
-
-//        if(arg0.getId() == R.id.gallery_btn1){
 //
-//            try{
-//                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//
-//                startActivityForResult(galleryIntent, GALLERY);
-//            }catch (ActivityNotFoundException anfe) {
-////display an error message
-//                String errorMessage = "Whoops – your device doesn’t support capturing images!";
-//                Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-//                toast.show();
-//            }
-//        }
-
-
-
-    }
-
-
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-        if (resultCode == RESULT_OK) {
-//user is returning from capturing an image using the camera
-            if (requestCode == CAMERA_CAPTURE) {
-                Bundle extras = data.getExtras();
-                Bitmap thePic = extras.getParcelable("data");
-                String imgcurTime = dateFormat.format(new Date());
-                File imageDirectory = new File(GridViewDemo_ImagePath);
-                imageDirectory.mkdirs();
-                String _path = GridViewDemo_ImagePath + imgcurTime + ".jpg";
-                try {
-                    FileOutputStream out = new FileOutputStream(_path);
-                    thePic.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                    out.close();
-                } catch (FileNotFoundException e) {
-                    e.getMessage();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                listOfImagesPath = null;
-                listOfImagesPath = RetriveCapturedImagePath();
-                if (listOfImagesPath != null) {
-                    grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
-                }
-            }
-        }
-//
-//        //gALLERY
-//        // When an Image is picked (Single image)
-//        if (requestCode == GALLERY && resultCode == RESULT_OK
-//                && null != data) {
-//
-//            File imageDirectory = new File(GridViewDemo_ImagePath);
-//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-//            imagesEncodedList = new ArrayList<String>();
-//            if(data.getData()!=null){
-//
-//                Uri mImageUri=data.getData();
-//
-//                // Get the cursor
-//                Cursor cursor = getContentResolver().query(mImageUri,
-//                        filePathColumn, null, null, null);
-//                // Move to first row
-//                cursor.moveToFirst();
-//
-//                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//                imageEncoded  = cursor.getString(columnIndex);
-//                cursor.close();
-//
-//                ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-//                mArrayUri.add(mImageUri);
-//                galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
-//                grid.setAdapter(galleryAdapter);
-//                grid.setVerticalSpacing(grid.getHorizontalSpacing());
-//                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) grid
-//                        .getLayoutParams();
-//                mlp.setMargins(0, grid.getHorizontalSpacing(), 0, 0);
-//
-//            } else {    //if user selects multiple images
-//                if (data.getClipData() != null) {
-//                    ClipData mClipData = data.getClipData();
-//                    ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-//                    for (int i = 0; i < mClipData.getItemCount(); i++) {
-//
-//                        ClipData.Item item = mClipData.getItemAt(i);
-//                        Uri uri = item.getUri();
-//                        mArrayUri.add(uri);
-//                        // Get the cursor
-//                        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-//                        // Move to first row
-//                        cursor.moveToFirst();
-//
-//                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//                        imageEncoded  = cursor.getString(columnIndex);
-//                        imagesEncodedList.add(imageEncoded);
-//                        cursor.close();
-//
-//                        galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
-//                        grid.setAdapter(galleryAdapter);
-//                        grid.setVerticalSpacing(grid.getHorizontalSpacing());
-//                        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) grid
-//                                .getLayoutParams();
-//                        mlp.setMargins(0, grid.getHorizontalSpacing(), 0, 0);
-//
-//                    }
-//                    Log.v("LOG_TAG", "Selected Images" + mArrayUri.size());
-//                }
-//            }
-//        } else {
-//            Toast.makeText(this, "You haven't picked Image",
-//                    Toast.LENGTH_LONG).show();
-//        }
-
-
-    }
-
-
-
     private List<String> RetriveCapturedImagePath() {
         List<String> tFileList = new ArrayList<String>();
         File f = new File(GridViewDemo_ImagePath);
@@ -246,7 +87,7 @@ public class ClosetImg extends Activity implements OnClickListener {
         }
         return tFileList;
     }
-
+//
     public class ImageListAdapter extends BaseAdapter {
         private Context context;
         private List<String> imgPic;
@@ -313,3 +154,102 @@ public class ClosetImg extends Activity implements OnClickListener {
         }
     }
 }
+
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//
+//        if (resultCode == RESULT_OK) {
+////user is returning from capturing an image using the camera
+//            if (requestCode == CAMERA_CAPTURE) {
+//                Bundle extras = data.getExtras();
+//                Bitmap thePic = extras.getParcelable("data");
+//                String imgcurTime = dateFormat.format(new Date());
+//                File imageDirectory = new File(GridViewDemo_ImagePath);
+//                imageDirectory.mkdirs();
+//                String _path = GridViewDemo_ImagePath + imgcurTime + ".jpg";
+//                try {
+//                    FileOutputStream out = new FileOutputStream(_path);
+//                    thePic.compress(Bitmap.CompressFormat.JPEG, 90, out);
+//                    out.close();
+//                } catch (FileNotFoundException e) {
+//                    e.getMessage();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                listOfImagesPath = null;
+//                listOfImagesPath = RetriveCapturedImagePath();
+//                if (listOfImagesPath != null) {
+//                    grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
+//                }
+//            }
+//        }
+////
+////        //gALLERY
+////        // When an Image is picked (Single image)
+////        if (requestCode == GALLERY && resultCode == RESULT_OK
+////                && null != data) {
+////
+////            File imageDirectory = new File(GridViewDemo_ImagePath);
+////            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+////            imagesEncodedList = new ArrayList<String>();
+////            if(data.getData()!=null){
+////
+////                Uri mImageUri=data.getData();
+////
+////                // Get the cursor
+////                Cursor cursor = getContentResolver().query(mImageUri,
+////                        filePathColumn, null, null, null);
+////                // Move to first row
+////                cursor.moveToFirst();
+////
+////                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+////                imageEncoded  = cursor.getString(columnIndex);
+////                cursor.close();
+////
+////                ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+////                mArrayUri.add(mImageUri);
+////                galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
+////                grid.setAdapter(galleryAdapter);
+////                grid.setVerticalSpacing(grid.getHorizontalSpacing());
+////                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) grid
+////                        .getLayoutParams();
+////                mlp.setMargins(0, grid.getHorizontalSpacing(), 0, 0);
+////
+////            } else {    //if user selects multiple images
+////                if (data.getClipData() != null) {
+////                    ClipData mClipData = data.getClipData();
+////                    ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+////                    for (int i = 0; i < mClipData.getItemCount(); i++) {
+////
+////                        ClipData.Item item = mClipData.getItemAt(i);
+////                        Uri uri = item.getUri();
+////                        mArrayUri.add(uri);
+////                        // Get the cursor
+////                        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
+////                        // Move to first row
+////                        cursor.moveToFirst();
+////
+////                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+////                        imageEncoded  = cursor.getString(columnIndex);
+////                        imagesEncodedList.add(imageEncoded);
+////                        cursor.close();
+////
+////                        galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
+////                        grid.setAdapter(galleryAdapter);
+////                        grid.setVerticalSpacing(grid.getHorizontalSpacing());
+////                        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) grid
+////                                .getLayoutParams();
+////                        mlp.setMargins(0, grid.getHorizontalSpacing(), 0, 0);
+////
+////                    }
+////                    Log.v("LOG_TAG", "Selected Images" + mArrayUri.size());
+////                }
+////            }
+////        } else {
+////            Toast.makeText(this, "You haven't picked Image",
+////                    Toast.LENGTH_LONG).show();
+////        }
+//
+//
+//    }
+//
