@@ -49,7 +49,7 @@ public class ClosetImg extends Activity {
     private GridView grid;
     private List<String> listOfImagesPath;
     private GalleryAdapter galleryAdapter;
-    public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetView/";
+    public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetPic/";
     String imageEncoded;
     List<String> imagesEncodedList;
 

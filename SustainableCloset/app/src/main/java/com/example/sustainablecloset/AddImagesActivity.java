@@ -21,11 +21,14 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,24 +40,28 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class AddImagesActivity extends AppCompatActivity {
 
     private List<String> listOfImagesPath;
-    private List<String> listOfImagesPat;
+
+    HashSet<Uri> mMedia = new HashSet<Uri>();
     public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GridViewDemo/";
     private GridView grid;
     private int GALLERY = 1, CAMERA = 2, CAMERA_PERMISSION_REQUEST_CODE = 4;
     private ImageView imageview;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static final String IMAGE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetView/";
+    private static final String IMAGE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetPic/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,8 +196,8 @@ public class AddImagesActivity extends AppCompatActivity {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         //listOfImagesPath.add(getRealPathFromURI_API19(getApplicationContext(), data.getData()));
                         imageview.setImageBitmap(selectedImage);
-
                         String imgcurTime = dateFormat.format(new Date());
+
                 File imageDirectory = new File(IMAGE_DIRECTORY);
                 imageDirectory.mkdirs();
                 String _path = IMAGE_DIRECTORY + imgcurTime + ".jpg";
@@ -210,7 +217,6 @@ public class AddImagesActivity extends AppCompatActivity {
                     grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
                 }
             }
-
                     break;
                 case 1:
                     if (resultCode == RESULT_OK && data != null) {
@@ -226,17 +232,36 @@ public class AddImagesActivity extends AppCompatActivity {
                                 String picturePath = cursor.getString(columnIndex);
                                 listOfImagesPath.add(picturePath);
                                 imageview.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                                saveImage(BitmapFactory.decodeFile(picturePath));
+                                //saveImage(BitmapFactory.decodeFile(picturePath));
+
+                                String imgcurTime = dateFormat.format(new Date());
+                                File imageDirectory = new File(IMAGE_DIRECTORY);
+                                imageDirectory.mkdirs();
+                                String _path = IMAGE_DIRECTORY + imgcurTime + ".jpg";
+                                try {
+                                    FileOutputStream out = new FileOutputStream(_path);
+                                    BitmapFactory.decodeFile(picturePath).compress(Bitmap.CompressFormat.JPEG, 90, out);
+                                    out.close();
+                                } catch (FileNotFoundException e) {
+                                    e.getMessage();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
 
                                 cursor.close();
                             }
+
                         }
 
-//                        //listOfImagesPat = null;
-//                        //listOfImagesPat = RetriveCapturedImagePath();
-//                        if (listOfImagesPat != null) {
-//                            grid.setAdapter(new ImageListAdapter(this, listOfImagesPat));
-//                        }
+
+
+
+
+                        //listOfImagesPat = null;
+                        //listOfImagesPath = RetriveCapturedImagePath();
+                        if (listOfImagesPath != null) {
+                            grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
+                        }
 
                     }
                     break;
