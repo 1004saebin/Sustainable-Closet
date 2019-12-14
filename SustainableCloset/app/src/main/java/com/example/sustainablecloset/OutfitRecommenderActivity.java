@@ -1,5 +1,6 @@
 package com.example.sustainablecloset;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -33,8 +34,8 @@ public class OutfitRecommenderActivity extends AppCompatActivity {
         ////ImageView
         ImageView firstImage = (ImageView) findViewById(R.id.firstImage);
 
-        int imageResource = getResources().getIdentifier("@drawable/outfit_recommend_5", null, this.getPackageName());
-        firstImage.setImageResource(imageResource);
+//        int imageResource = getResources().getIdentifier("@drawable/outfit_recommend_5", null, this.getPackageName());
+//        firstImage.setImageResource(imageResource);
 
 
 
@@ -47,13 +48,30 @@ public class OutfitRecommenderActivity extends AppCompatActivity {
 //        }
     }
 
-    public void previousView(View v){
-        viewFlipper.showPrevious();
+//    public void previousView(View v){
+//        viewFlipper.showPrevious();
+//    }
+//
+////    public void nextView(View v){
+////
+////
+////        //viewFlipper.showNext();
+////    }
+   public void previousView(View view){
+
+       Intent intent = new Intent(getApplicationContext(), RecommenderPrev.class);
+       startActivity(intent);
+
+   }
+
+
+    public void nextView(View view){
+
+        Intent intent = new Intent(getApplicationContext(), Recommender1.class);
+        startActivity(intent);
+
     }
 
-    public void nextView(View v){
-        viewFlipper.showNext();
-    }
 
 //    public void flipperImages(int image){
 //        ImageView imageView = new ImageView(this);
