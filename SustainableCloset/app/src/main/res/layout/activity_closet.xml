@@ -4,22 +4,28 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/backgroundCyan"
-    tools:context=".AddImagesActivity">
+    tools:context=".ClosetImg">
 
 
         <GridView
             android:id="@+id/gridviewimg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:layout_below="@+id/btnSend"
             android:gravity="center"
-            android:numColumns="auto_fit"
             android:scrollbarStyle="outsideInset"
             android:smoothScrollbar="true"
             android:verticalSpacing="10dp"
             android:paddingBottom="50dp"
             android:paddingTop="10dp"
-            android:columnWidth="100dp"
+            android:numColumns="3"
+            android:horizontalSpacing="50dp"
+            android:columnWidth="185dp"
             android:stretchMode="columnWidth"
+
             >
 
         </GridView>
@@ -27,8 +33,11 @@
         android:id="@+id/seeRate_btn1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="See Rate"
+        android:text="Rate: 7/10"
+        android:textSize="50dp"
         android:layout_marginTop="530dp"/>
+
+
 
 
 

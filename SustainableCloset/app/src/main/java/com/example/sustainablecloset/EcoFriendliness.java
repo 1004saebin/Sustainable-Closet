@@ -1,69 +1,38 @@
 package com.example.sustainablecloset;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
+import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class ClosetImg extends Activity {
-
-    Button rateBtn = null;
-    Button galleryBtn = null;
-    final int CAMERA_CAPTURE = 1;
-    private int GALLERY = 1;
-    private Uri picUri;
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+public class EcoFriendliness extends AppCompatActivity {
     private GridView grid;
     private List<String> listOfImagesPath;
     private GalleryAdapter galleryAdapter;
     public static final String GridViewDemo_ImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetPict/";
-    String imageEncoded;
-    List<String> imagesEncodedList;
-    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_closet);
-
-        //Rate button
-        rateBtn = (Button) findViewById(R.id.seeRate_btn1);
-
+        setContentView(R.layout.eco_friendliness);
 
         grid = (GridView) findViewById(R.id.gridviewimg);
 
@@ -72,20 +41,6 @@ public class ClosetImg extends Activity {
         if (listOfImagesPath != null) {
             grid.setAdapter(new ImageListAdapter(this, listOfImagesPath));
         }
-
-        // Set an item click listener for GridView widget
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the GridView selected/clicked item text
-                setContentView(R.layout.ind_img);
-
-                imageView = findViewById(R.id.im1);
-                imageView.setImageResource(R.drawable.image12);
-
-
-            }
-        });
 
 
     }
@@ -120,7 +75,6 @@ public class ClosetImg extends Activity {
 
     }
 
-//
     private List<String> RetriveCapturedImagePath() {
         List<String> tFileList = new ArrayList<String>();
         File f = new File(GridViewDemo_ImagePath);
@@ -137,7 +91,7 @@ public class ClosetImg extends Activity {
         }
         return tFileList;
     }
-//
+    //
     public class ImageListAdapter extends BaseAdapter {
         private Context context;
         private List<String> imgPic;
@@ -205,4 +159,3 @@ public class ClosetImg extends Activity {
     }
 
 }
-

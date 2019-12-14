@@ -26,4 +26,12 @@ public class LandingActivity extends AppCompatActivity {
     public void outfitRecOnClick(View view){
         setContentView(R.layout.outfit_recommender);
     }
+
+    public void ecoFriendlinees(View view){
+
+        Intent intent = new Intent(getApplicationContext(), EcoFriendliness.class);
+        startActivity(intent);
+
+    }
+
 }

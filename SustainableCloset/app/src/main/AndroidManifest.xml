@@ -13,12 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClosetActivity"></activity>
+        <activity android:name=".IndRatingActivity"></activity>
+        <activity android:name=".EcoFriendliness"
+            android:label="Closet"/>
         <activity
             android:name=".AddImagesActivity"
-            android:label="Upload Images"/>
+            android:label="Upload Images" />
         <activity android:name=".LandingActivity" />
-        <activity android:name=".ClosetImg" />
+        <activity android:name=".ClosetImg"
+            android:label="Rating"/>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
