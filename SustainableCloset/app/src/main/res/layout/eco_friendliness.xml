@@ -10,9 +10,13 @@
     <GridView
         android:id="@+id/gridviewimg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/btnSend"
+        android:numColumns="3"
         android:gravity="center"
-        android:numColumns="auto_fit"
         android:scrollbarStyle="outsideInset"
         android:smoothScrollbar="true"
         android:verticalSpacing="10dp"
@@ -24,12 +28,14 @@
 
     </GridView>
 
-    <Button
-        android:id="@+id/capture_btn1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Camera"
-        android:layout_marginTop="530dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:text="7/10"
+        android:layout_below="@+id/gridviewimg"/>
+
 
 
 

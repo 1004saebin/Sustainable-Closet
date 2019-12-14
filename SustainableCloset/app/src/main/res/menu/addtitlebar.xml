@@ -26,6 +26,7 @@
                 <item
                     android:icon="@drawable/ic_spa_black_24dp"
                     android:id="@+id/menuItemBeer"
+                    android:onClick="goToRate"
                     android:title="Eco-friendliness"></item>
 
             </menu>

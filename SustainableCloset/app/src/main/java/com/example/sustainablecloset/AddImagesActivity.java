@@ -61,7 +61,7 @@ public class AddImagesActivity extends AppCompatActivity {
     private int GALLERY = 1, CAMERA = 2, CAMERA_PERMISSION_REQUEST_CODE = 4;
     private ImageView imageview;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static final String IMAGE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetPic/";
+    private static final String IMAGE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ClosetPict/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -360,6 +360,13 @@ public class AddImagesActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void goToRate(MenuItem menuItem){
+
+
+        Intent intent = new Intent(getApplicationContext(), EcoFriendliness.class);
+        startActivity(intent);
+
+    }
 
 
 
@@ -391,15 +398,19 @@ public class AddImagesActivity extends AppCompatActivity {
         //—returns an ImageView view—
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
+            View v = convertView;
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             BitmapFactory.Options bfOptions = new BitmapFactory.Options();
+            v = inflater.inflate(R.layout.grid_view_gallery, null);
             bfOptions.inDither = false;                     //Disable Dithering mode
             bfOptions.inPurgeable = true;                   //Tell to gc that whether it needs free memory, the Bitmap can be cleared
             bfOptions.inInputShareable = true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
             bfOptions.inTempStorage = new byte[32 * 1024];
             if (convertView == null) {
-                imageView = new ImageView(context);
+                imageView = v.findViewById(R.id.ivGallery);
                 imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                imageView.setPadding(0, 0, 0, 0);
+                imageView.setPadding(8, 8, 8, 8);
+                imageView.setScaleType(ImageView.ScaleType.CENTER);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -414,6 +425,7 @@ public class AddImagesActivity extends AppCompatActivity {
                     imageView.setId(position);
                     imageView.setLayoutParams(new GridView.LayoutParams(200, 160));
                     imageView.setPadding(8,8,8,8);
+                    imageView.setScaleType(ImageView.ScaleType.CENTER);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

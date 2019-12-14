@@ -53,6 +53,7 @@
         android:drawableTop="@drawable/ic_spa_black_24dp"
         android:padding="10dp"
         android:text="Eco-Friendliness Score"
+        android:onClick="ecoFriendlinees"
         android:textColor="@color/green" />
 
 </LinearLayout>
